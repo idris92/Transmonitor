@@ -11,6 +11,10 @@ import ListFilter from '@/components/ListFilter'
 import ListItem from '@/components/ListItem'
 import { useState } from 'react'
 import ListHeading from '@/components/ListHeading'
+import IntervalFilter from '@/components/IntervalFilter'
+import dynamic from "next/dynamic";
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+
 
 
 
@@ -111,6 +115,20 @@ export default function Home() {
 
   const [params, setParams] = useState('')
   const [noParams, setNoparams] = useState(10)
+  const [options, setOptions] = useState({
+    chart: {
+      id: "basic-bar"
+    },
+    xaxis: {
+      categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+    }
+  })
+  const [series, setSeries] = useState([
+    {
+      name: "series-1",
+      data: [30, 40, 45, 50, 49, 60, 70, 91]
+    }
+  ])
 
   const tableHeading=[
     {
@@ -147,6 +165,10 @@ export default function Home() {
   const handleNoParams=(value:number)=>{
     setNoparams(value)
   }
+
+  const Chart = dynamic(() => import("react-apexcharts"), {
+    ssr: false,
+  });
   return (
     <>
       <Head>
@@ -160,7 +182,7 @@ export default function Home() {
         <DashboardWrapper
         pageTitle="TransMonitor"
         background="white"
-        padding="30px"
+        padding='30px'
       >
         <Flex direction='column' gap='27px'>
           <SimpleGrid columns={[1, null, 4]} spacing='9px'>
@@ -169,17 +191,41 @@ export default function Home() {
             <Transaction title='Total Transaction Volume' total={452000}/>
             <Transaction title='Total Transaction Value' total={4000000} currency={true}/>
           </SimpleGrid>
-          <Flex minH='329px' h='329px' w='100%' direction={{base:'column', md:'row'}}>
-              <Flex w={{base:'100%', md:'65%'}}  h='100%' bg='white' border='1px solid #EEF8FD'>
-                sdfgh
+          <Flex  h={{base:'auto', md:'329px'}} w='100%' direction={{base:'column', md:'row'}}>
+              <Flex w={{base:'100%', md:'65%'}}  h='100%' bg='white' border='1px solid #EEF8FD' direction='column' p='26px 34px'>
+                  <Flex w='100' h='28%' alignItems='center' justifyContent='space-between'>
+                      <Text fontSize={{base:'14px', md:'18px'}} fontWeight='400' fontFamily='Segoe UI' color='black.200'>Today: 5, Aug 2018</Text>
+                      <Flex gap={{base:'12px', md:'40px'}} alignItems='center' >
+                            <Flex border='1px solid #DDE0E3' alignItems='center' >
+                              <IntervalFilter/>
+                            </Flex>
+                            <Flex gap={{base:'8px', md:'13px'}} alignItems='center'>
+                                  <Flex boxSize='30px' bg='linear-gradient(0deg, #F2F4F7 0%, #FFF 100%)' border='1px solid #CED0DA' alignItems='center' justifyContent='center'>
+                                    <AiOutlineLeft color='#7F8FA4' size='12px'/>
+                                  </Flex>
+                                  <Flex boxSize='30px' bg='linear-gradient(0deg, #F2F4F7 0%, #FFF 100%)' border='1px solid #CED0DA' alignItems='center' justifyContent='center'>
+                                      <AiOutlineRight color='#7F8FA4' size='12px'/>
+                                  </Flex>
+                            </Flex>
+                      </Flex>
+                  </Flex>
+                  <Flex w='100%' h='71%'>
+                    <Chart
+                        options={options}
+                        series={series}
+                        type="line"
+                        width="100%"
+                        
+                      />
+                  </Flex>
               </Flex>
               <Flex w='0px' h='100%' border='4px solid #F7F8FA' display={{base:'none', md:'flex'}}/>
-              <Flex w={{base:'100%', md:'35%'}} h='100%' direction='column' >
-                  <Flex w='100%' h='50%'>
+              <Flex w={{base:'100%', md:'35%'}} h={{base:'auto', md:'100%'}} direction='column' >
+                  <Flex w='100%' h={{base:'auto', md:'50%'}}>
                       <OrderProgress/>
                   </Flex>
                   <Flex w='100%' h='0px' border='4px solid #F7F8FA' display={{base:'none', md:'flex'}}/>
-                  <Flex  w='100%' h='50%'>
+                  <Flex  w='100%' h={{base:'auto', md:'50%'}}>
                     <PaymentProgress/>
                   </Flex>
               </Flex>
