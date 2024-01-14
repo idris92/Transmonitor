@@ -1,4 +1,4 @@
-import { Flex, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
+import { Flex, Menu, MenuButton,Button, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import React from 'react'
 import { DownArrow } from './icons/downArrow'
 
@@ -7,13 +7,24 @@ const ListFilter = () => {
     <Flex w={{base:'100%', md:'auto'}} justifyContent='flex-start' alignItems='flex-end' gap='20px'>
         <Text fontSize='13px' fontWeight='400' fontFamily=' Segoe UI' color='black.800'>Showing</Text>
         <Flex alignItems='center' >
-        <Menu matchWidth>
+        <Menu  matchWidth >
             <MenuButton
                 bg='transparent'
                 border='none'
-                color='primary.1000'        
+                color='primary.1000' 
+                _hover={{
+                    bg:'transparent',
+                    border:'none'
+                }}
+                _expanded={{ bg: 'transparent', border:'none' }}
+                _focus={{ bg: 'transparent', border:'none' }}
+                as={Button}
+                rightIcon={<DownArrow color='primary.1000' boxSize='24px'/> }  
+                fontSize='13px'
+                fontWeight='400'
+                fontFamily='Segoe UI'          
             >
-                20 <DownArrow color='primary.1000' boxSize='24px' justifyContent='center' alignItems='center'/>
+                20 
             </MenuButton>
             <MenuList  minW='80%' >
                 <MenuItem>5</MenuItem>

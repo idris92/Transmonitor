@@ -1,4 +1,4 @@
-import { Flex, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { Flex, Menu, MenuButton,Button, MenuItem, MenuList } from '@chakra-ui/react'
 import React from 'react'
 import { DownArrow } from './icons/downArrow'
 
@@ -9,9 +9,21 @@ const StatusFilter = () => {
             <MenuButton
                 bg='transparent'
                 border='none'
-                color='primary.1000'        
+                color='primary.1000' 
+                _hover={{
+                    bg:'transparent',
+                    border:'none'
+                }}
+                _expanded={{ bg: 'transparent', border:'none' }}
+                _focus={{ bg: 'transparent', border:'none' }}
+                as={Button}
+                rightIcon={<DownArrow color='primary.1000' boxSize='24px'/> }  
+                fontSize='13px'
+                fontWeight='400'
+                fontFamily='Segoe UI'    
             >
-                Show <DownArrow color='primary.1000' boxSize='24px' justifyContent='center' alignItems='center'/>
+                 
+                Show 
             </MenuButton>
             <MenuList >
                 <MenuItem>All</MenuItem>

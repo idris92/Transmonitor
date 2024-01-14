@@ -1,18 +1,96 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import DashboardWrapper from '@/components/dashboard'
-import { Flex, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, SimpleGrid, Text } from '@chakra-ui/react'
+import { Accordion,Flex, SimpleGrid, Table, TableContainer, Tbody, Text, Th, Thead, Tr } from '@chakra-ui/react'
 import Transaction from '@/components/Transaction'
 import { OrderProgress } from '@/components/OrderProgress'
 import { PaymentProgress } from '@/components/PaymentProgress'
-import { DownArrow } from '@/components/icons/downArrow'
-import { SearchIcon } from '@/components/icons/search'
 import StatusFilter from '@/components/StatusFilter'
 import SearchFilter from '@/components/SearchFilter'
 import ListFilter from '@/components/ListFilter'
+import ListItem from '@/components/ListItem'
+import { useState } from 'react'
+import ListHeading from '@/components/ListHeading'
+
 
 
 export default function Home() {
+
+  const [payments, setPayments] = useState([
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 15” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Reconcilled',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 14” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Pending',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 13” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Un-reconcilled',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 12” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Reconcilled',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 11” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Pending',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }
+  ])
+
+  const tableHeading=[
+    {
+      title: 'Item Type',
+      isNumeric: false
+    },
+    {
+      title: 'Price',
+      isNumeric: false
+    },
+    {
+      title: 'Transaction No',
+      isNumeric: true
+    },
+    {
+      title: 'Timing',
+      isNumeric: false
+    },
+    {
+      title: 'Status',
+      isNumeric: false
+    },
+  ]
+
+
+  const handleSearch=(value:any)=>{
+      setPayments(()=> payments.filter(obj=>obj.item_type.includes(value)))
+  }
   return (
     <>
       <Head>
@@ -57,13 +135,46 @@ export default function Home() {
               <ListFilter/>
 
               <Flex w={{base:'100%', md:'31%'}} justifyContent='flex-start'> 
-                  <SearchFilter/>
+                  <SearchFilter handleSearch={handleSearch}/>
               </Flex>
 
               <Flex  w={{base:'100%', md:'29%'}} justifyContent='flex-start'>
                   <StatusFilter/>
               </Flex>
 
+          </Flex>
+          <Flex w='100%'>
+            <Accordion  w="100%" allowToggle>
+              <TableContainer w='100%'>
+                <Table variant='simple'>
+                  <Thead>
+                    <Tr bg='black.400' > 
+                    {
+                      tableHeading.map((value, index)=>(
+                        <ListHeading title={value.title} isNumeric={value.isNumeric} key={index}/>
+                      ))
+                    }         
+                    </Tr>
+                  </Thead>
+                  <Tbody > 
+                    {
+                      payments.map((item, index)=>(
+                              <ListItem 
+                              image_url={item.image_url} 
+                              item_name={item.item_type} 
+                              price={item.price} 
+                              time={item.time}
+                              transaction_no={item.transaction_no}
+                              status={item.status as "Reconcilled" | "Un-reconcilled" | "Pending"}
+                              key={index}
+                              />
+                      ))
+                    }            
+                   
+                  </Tbody>
+                </Table>
+              </TableContainer>
+            </Accordion>
           </Flex>
         </Flex>
         </DashboardWrapper>
