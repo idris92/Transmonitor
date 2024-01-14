@@ -55,7 +55,7 @@ export default function DashboardWrapper({
             maxW="100%"
             borderRadius={"8px"}
             pos={"relative"}
-            p={padding}
+            p={{base:'18px', md:padding}}
             overflow={"hidden"}
           >
             {children}
