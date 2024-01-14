@@ -171,8 +171,8 @@ export default function Home() {
             <Transaction title='Total Transaction Value' total={4000000} currency={true}/>
           </SimpleGrid>
           <Flex minH='329px' h='329px' w='100%' direction={{base:'column', md:'row'}}>
-              <Flex w={{base:'100%', md:'65%'}} h='100%' bg='coral'>
-                dsfgh
+              <Flex w={{base:'100%', md:'65%'}}  h='100%' bg='coral' p='8px'>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi quis aspernatur natus optio neque illo. Quod quidem voluptates dolores ex saepe laudantium, laboriosam ipsum eum maxime non est? Impedit, doloribus.
               </Flex>
               <Flex w='0px' h='100%' border='4px solid #F7F8FA' display={{base:'none', md:'flex'}}/>
               <Flex w={{base:'100%', md:'35%'}} h='100%' direction='column' >
@@ -188,7 +188,7 @@ export default function Home() {
           <Flex w='100%' justifyContent='flex-start' mt='16px'>
                 <Text color='black.800' fontSize='36px' fontWeight='400' fontFamily=' Segoe UI'> Payments</Text>
           </Flex>
-          <Flex w='100%' maxH='30px' justifyContent='space-between' alignItems='flex-end' overflow='hidden' direction={{base:'column', md:'row'}}>
+          <Flex w='100%' maxH={{base:'auto', md:'30px'}} gap={{base:'18px', md:'none'}} justifyContent='space-between' alignItems='flex-end' overflow='hidden' direction={{base:'column', md:'row'}}>
               <ListFilter handleNoParams={handleNoParams} noParams={noParams}/>
 
               <Flex w={{base:'100%', md:'31%'}} justifyContent='flex-start'> 
