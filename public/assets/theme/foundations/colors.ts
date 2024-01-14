@@ -20,5 +20,6 @@ export const colors = {
   },
   white:{
     1000: "#fff",
+    900: "#F7F8FA"
   }
 };
