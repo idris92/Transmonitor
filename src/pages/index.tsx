@@ -3,7 +3,8 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import DashboardWrapper from '@/components/dashboard'
-import { Text } from '@chakra-ui/react'
+import { SimpleGrid, Text } from '@chakra-ui/react'
+import Transaction from '@/components/Transaction'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,12 @@ export default function Home() {
         background="white"
         padding="30px"
       >
-        <Text>gfhjkklgfhhjklkl</Text>
+        <SimpleGrid columns={[1, null, 4]} spacing='9px'>
+          <Transaction title='Daily Transaction Volume' total={2342}/>
+          <Transaction title='Daily Transaction Value' total={4000000} currency={true}/>
+          <Transaction title='Total Transaction Volume' total={452000}/>
+          <Transaction title='Total Transaction Value' total={4000000} currency={true}/>
+        </SimpleGrid>
         </DashboardWrapper>
       </main>
     </>
