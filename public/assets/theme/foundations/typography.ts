@@ -51,9 +51,9 @@ export const typography = {
   // },
 
   fonts: {
-    heading: `"Inter"`,
-    body: `"Inter"`,
-    mono: `"Inter"`,
+    heading: `"Roboto"`,
+    body: `"Roboto"`,
+    mono: `"Roboto"`,
   },
 
  
