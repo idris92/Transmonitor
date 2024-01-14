@@ -2,7 +2,13 @@ import { Flex, Menu, MenuButton,Button, MenuItem, MenuList, Text } from '@chakra
 import React from 'react'
 import { DownArrow } from './icons/downArrow'
 
-const ListFilter = () => {
+
+type list={
+    handleNoParams : (value:number)=> void
+    noParams: number
+}
+
+const ListFilter = ({handleNoParams, noParams}: list) => {
   return (
     <Flex w={{base:'100%', md:'auto'}} justifyContent='flex-start' alignItems='flex-end' gap='20px'>
         <Text fontSize='13px' fontWeight='400' fontFamily=' Segoe UI' color='black.800'>Showing</Text>
@@ -24,13 +30,13 @@ const ListFilter = () => {
                 fontWeight='400'
                 fontFamily='Segoe UI'          
             >
-                20 
+                {noParams}
             </MenuButton>
             <MenuList  minW='80%' >
-                <MenuItem>5</MenuItem>
-                <MenuItem>10</MenuItem>
-                <MenuItem>15</MenuItem>
-                <MenuItem>20</MenuItem> 
+                <MenuItem onClick={()=>handleNoParams(5)}>5</MenuItem>
+                <MenuItem onClick={()=>handleNoParams(10)}>10</MenuItem>
+                <MenuItem onClick={()=>handleNoParams(15)}>15</MenuItem>
+                <MenuItem onClick={()=>handleNoParams(20)}>20</MenuItem> 
             </MenuList>
             </Menu>
         </Flex>

@@ -2,7 +2,12 @@ import { Flex, Menu, MenuButton,Button, MenuItem, MenuList } from '@chakra-ui/re
 import React from 'react'
 import { DownArrow } from './icons/downArrow'
 
-const StatusFilter = () => {
+
+type status={
+    handleStatusFilter : (value: string)=> void
+}
+
+const StatusFilter = ({handleStatusFilter}: status) => {
   return (
     <Flex w='100%'>
         <Menu matchWidth>
@@ -26,11 +31,31 @@ const StatusFilter = () => {
                 Show 
             </MenuButton>
             <MenuList >
-                <MenuItem>All</MenuItem>
-                <MenuItem>Reconcilled</MenuItem>
-                <MenuItem>Un-reconcilled</MenuItem>
-                <MenuItem>Settled</MenuItem> 
-                <MenuItem>Unsettled</MenuItem> 
+                <MenuItem 
+                onClick={() => {
+                    handleStatusFilter(''); 
+                  }}
+                >All</MenuItem>
+                <MenuItem
+                 onClick={() => {
+                    handleStatusFilter('Reconcilled'); 
+                  }}
+                >Reconcilled</MenuItem>
+                <MenuItem
+                 onClick={() => {
+                    handleStatusFilter('Un-reconcilled'); 
+                  }}
+                >Un-reconcilled</MenuItem>
+                <MenuItem
+                 onClick={() => {
+                    handleStatusFilter('Settled'); 
+                  }}
+                >Settled</MenuItem> 
+                <MenuItem
+                 onClick={() => {
+                    handleStatusFilter('Pending'); 
+                  }}
+                >Unsettled</MenuItem> 
             </MenuList>
         </Menu>
     </Flex>

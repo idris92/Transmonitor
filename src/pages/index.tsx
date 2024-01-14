@@ -61,8 +61,56 @@ export default function Home() {
       'time':'12:30',
       'status':'Pending',
       'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 15” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Reconcilled',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 14” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Pending',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 13” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Un-reconcilled',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 12” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Reconcilled',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    },
+    {
+      'image_url':'',
+      'item_type':'Apple Mac Book 11” 250 SSD 12GB',
+      'price':'$73430',
+      'transaction_no':1234567890,
+      'time':'12:30',
+      'status':'Pending',
+      'more_info': "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     }
   ])
+
+  const [params, setParams] = useState('')
+  const [noParams, setNoparams] = useState(10)
 
   const tableHeading=[
     {
@@ -89,7 +137,15 @@ export default function Home() {
 
 
   const handleSearch=(value:any)=>{
-      setPayments(()=> payments.filter(obj=>obj.item_type.includes(value)))
+    setParams(value)
+  }
+
+  const handleStatusFilter=(value:any)=>{
+    setParams(value)
+  }
+
+  const handleNoParams=(value:number)=>{
+    setNoparams(value)
   }
   return (
     <>
@@ -132,14 +188,14 @@ export default function Home() {
                 <Text color='black.800' fontSize='36px' fontWeight='400' fontFamily=' Segoe UI'> Payments</Text>
           </Flex>
           <Flex w='100%' maxH='30px' justifyContent='space-between' alignItems='flex-end' overflow='hidden' direction={{base:'column', md:'row'}}>
-              <ListFilter/>
+              <ListFilter handleNoParams={handleNoParams} noParams={noParams}/>
 
               <Flex w={{base:'100%', md:'31%'}} justifyContent='flex-start'> 
                   <SearchFilter handleSearch={handleSearch}/>
               </Flex>
 
               <Flex  w={{base:'100%', md:'29%'}} justifyContent='flex-start'>
-                  <StatusFilter/>
+                  <StatusFilter handleStatusFilter={handleStatusFilter}/>
               </Flex>
 
           </Flex>
@@ -158,7 +214,7 @@ export default function Home() {
                   </Thead>
                   <Tbody > 
                     {
-                      payments.map((item, index)=>(
+                      payments.filter(obj=>obj.item_type.includes(params)|| obj.status.includes(params)).slice(0,noParams).map((item, index)=>(
                               <ListItem 
                               image_url={item.image_url} 
                               item_name={item.item_type} 
