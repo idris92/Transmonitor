@@ -192,8 +192,8 @@ export default function Home() {
             <Transaction title='Total Transaction Value' total={4000000} currency={true}/>
           </SimpleGrid>
           <Flex  h={{base:'auto', md:'329px'}} w='100%' direction={{base:'column', md:'row'}}>
-              <Flex w={{base:'100%', md:'65%'}}  h='100%' bg='white' border='1px solid #EEF8FD' direction='column' p='26px 34px'>
-                  <Flex w='100' h='28%' alignItems='center' justifyContent='space-between'>
+              <Flex w={{base:'100%', md:'65%'}}  h='100%' bg='white' border='1px solid #EEF8FD' direction='column' p={{base:'13px 17px', md:'26px 34px'}}>
+                  <Flex w='100' h='28%' alignItems='center' justifyContent='space-between' gap={{base:'4px', md:'0px'}}>
                       <Text fontSize={{base:'14px', md:'18px'}} fontWeight='400' fontFamily='Segoe UI' color='black.200'>Today: 5, Aug 2018</Text>
                       <Flex gap={{base:'12px', md:'40px'}} alignItems='center' >
                             <Flex border='1px solid #DDE0E3' alignItems='center' >
