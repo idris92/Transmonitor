@@ -11,6 +11,7 @@ import ListFilter from '@/components/ListFilter'
 import ListItem from '@/components/ListItem'
 import { useState } from 'react'
 import ListHeading from '@/components/ListHeading'
+import ReactECharts from 'echarts-for-react';
 
 
 
@@ -169,9 +170,9 @@ export default function Home() {
             <Transaction title='Total Transaction Volume' total={452000}/>
             <Transaction title='Total Transaction Value' total={4000000} currency={true}/>
           </SimpleGrid>
-          <Flex h='329px' w='100%' direction={{base:'column', md:'row'}}>
+          <Flex minH='329px' h='329px' w='100%' direction={{base:'column', md:'row'}}>
               <Flex w={{base:'100%', md:'65%'}} h='100%' bg='coral'>
-                  hgvjbknlkmbjnkml;v bjvnkjlkml
+                dsfgh
               </Flex>
               <Flex w='0px' h='100%' border='4px solid #F7F8FA' display={{base:'none', md:'flex'}}/>
               <Flex w={{base:'100%', md:'35%'}} h='100%' direction='column' >

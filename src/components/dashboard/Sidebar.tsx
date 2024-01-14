@@ -26,7 +26,7 @@ const Dashboard_Links = {
   'Main':[
     {
       name: "Overview",
-      link: "/dashboard/overview",
+      link: "/",
       // children: [],
       icon: <OverviewIcon color='black.1000'/>
     },

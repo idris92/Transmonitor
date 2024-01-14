@@ -27,7 +27,7 @@ type side = {
 export default function Topbar({ pageTitle, sidebar }: side) {
 
   return (
-    <Flex>
+    <Flex >
         <Flex
             as="header"
             align="center"
@@ -37,7 +37,8 @@ export default function Topbar({ pageTitle, sidebar }: side) {
             background="white"
             boxShadow={"0px 4px 8px rgba(208, 220, 250, 0.25)"}
             h="60px"
-            zIndex='20000'
+            zIndex='2000'
+           
           >
             <Flex >
 

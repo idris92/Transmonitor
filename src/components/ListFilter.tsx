@@ -12,8 +12,8 @@ const ListFilter = ({handleNoParams, noParams}: list) => {
   return (
     <Flex w={{base:'100%', md:'auto'}} justifyContent='flex-start' alignItems='flex-end' gap='20px'>
         <Text fontSize='13px' fontWeight='400' fontFamily=' Segoe UI' color='black.800'>Showing</Text>
-        <Flex alignItems='center' >
-        <Menu  matchWidth >
+        <Flex alignItems='flex-end' >
+        <Menu  matchWidth>
             <MenuButton
                 bg='transparent'
                 border='none'
@@ -25,10 +25,10 @@ const ListFilter = ({handleNoParams, noParams}: list) => {
                 _expanded={{ bg: 'transparent', border:'none' }}
                 _focus={{ bg: 'transparent', border:'none' }}
                 as={Button}
-                rightIcon={<DownArrow color='primary.1000' boxSize='24px'/> }  
+                rightIcon={<DownArrow color='primary.1000' boxSize='8px'/> }  
                 fontSize='13px'
                 fontWeight='400'
-                fontFamily='Segoe UI'          
+                fontFamily='Segoe UI'        
             >
                 {noParams}
             </MenuButton>

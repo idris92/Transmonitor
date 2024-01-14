@@ -43,7 +43,7 @@ export default function NavItem(props) {
       {...rest}
     >
       {
-        (hover||active) && (
+        hover && (
           <Flex w='4px' bg='primary.1000' h='100%'>
 
           </Flex>
@@ -56,7 +56,7 @@ export default function NavItem(props) {
         fontSize="11px"
         fontWeight='400'
         fontFamily='Segoe UI'
-        pl={hover || active ? '38px' : '42px'}
+        pl={hover  ? '38px' : '42px'}
       >
         {icon && (
           <Box

@@ -22,7 +22,7 @@ const StatusFilter = ({handleStatusFilter}: status) => {
                 _expanded={{ bg: 'transparent', border:'none' }}
                 _focus={{ bg: 'transparent', border:'none' }}
                 as={Button}
-                rightIcon={<DownArrow color='primary.1000' boxSize='24px'/> }  
+                rightIcon={<DownArrow color='primary.1000' boxSize='8px'/> }  
                 fontSize='13px'
                 fontWeight='400'
                 fontFamily='Segoe UI'    
